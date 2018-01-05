@@ -30,6 +30,7 @@
 
 #include "quaternionFilters.h"
 #include "MPU9250.h"
+#include "ArduinoJson.h"
 
 #define AHRS true         // Set to false for basic data read
 #define SerialDebug true  // Set to true to get Serial output for debugging
@@ -40,22 +41,35 @@ int myLed  = 13;  // Set up pin 13 led for toggling
 
 MPU9250 myIMU;
 
+StaticJsonBuffer<200> jsonBuffer;
+
+
+
 void setup()
 {
-  Wire.begin();
-  // TWBR = 12;  // 400 kbit/sec I2C speed
-  Serial.begin(38400);
+    StaticJsonBuffer<200> jsonBuffer;
 
-  // Set up the interrupt pin, its set as active high, push-pull
-  pinMode(intPin, INPUT);
-  digitalWrite(intPin, LOW);
-  pinMode(myLed, OUTPUT);
-  digitalWrite(myLed, HIGH);
+    JsonObject& root = jsonBuffer.createObject();
+    root["sensor"] = "gps";
+    root["time"] = 1351824120;
 
-  // Read the WHO_AM_I register, this is a good test of communication
-  byte c = myIMU.readByte(MPU9250_ADDRESS, WHO_AM_I_MPU9250);
-  Serial.print("MPU9250 "); Serial.print("I AM "); Serial.print(c, HEX);
-  Serial.print(" I should be "); Serial.println(0x71, HEX);
+    JsonArray& data = root.createNestedArray("data");
+    data.add(48.756080);
+    data.add(2.302038);
+    Wire.begin();
+    // TWBR = 12;  // 400 kbit/sec I2C speed
+    Serial.begin(38400);
+
+    // Set up the interrupt pin, its set as active high, push-pull
+    pinMode(intPin, INPUT);
+    digitalWrite(intPin, LOW);
+    pinMode(myLed, OUTPUT);
+    digitalWrite(myLed, HIGH);
+
+    // Read the WHO_AM_I register, this is a good test of communication
+    byte c = myIMU.readByte(MPU9250_ADDRESS, WHO_AM_I_MPU9250);
+    Serial.print("MPU9250 "); Serial.print("I AM "); Serial.print(c, HEX);
+    Serial.print(" I should be "); Serial.println(0x71, HEX);
 
   if (c == 0x71) // WHO_AM_I should always be 0x68
   {
