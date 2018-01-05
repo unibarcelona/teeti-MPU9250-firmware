@@ -1,0 +1,4 @@
+/home/ibenito/CLion/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug

@@ -1,0 +1,11 @@
+/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/CMakeFiles/PLATFORMIO_BUILD.dir
+/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/CMakeFiles/PLATFORMIO_UPLOAD.dir
+/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/CMakeFiles/PLATFORMIO_CLEAN.dir
+/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/CMakeFiles/PLATFORMIO_PROGRAM.dir
+/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/CMakeFiles/PLATFORMIO_TEST.dir
+/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/CMakeFiles/PLATFORMIO_UPLOADFS.dir
+/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/CMakeFiles/PLATFORMIO_REBUILD_PROJECT_INDEX.dir
+/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/CMakeFiles/PLATFORMIO_UPDATE_ALL.dir
+/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/CMakeFiles/teeti-MPU9250-firmware.dir

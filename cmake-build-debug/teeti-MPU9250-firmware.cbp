@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="teeti-MPU9250-firmware"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PLATFORMIO_BUILD">
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 PLATFORMIO_BUILD"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PLATFORMIO_UPLOAD">
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 PLATFORMIO_UPLOAD"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PLATFORMIO_CLEAN">
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 PLATFORMIO_CLEAN"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PLATFORMIO_PROGRAM">
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 PLATFORMIO_PROGRAM"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PLATFORMIO_TEST">
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 PLATFORMIO_TEST"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PLATFORMIO_UPLOADFS">
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 PLATFORMIO_UPLOADFS"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PLATFORMIO_REBUILD_PROJECT_INDEX">
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 PLATFORMIO_REBUILD_PROJECT_INDEX"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PLATFORMIO_UPDATE_ALL">
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 PLATFORMIO_UPDATE_ALL"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="teeti-MPU9250-firmware">
+				<Option output="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/teeti-MPU9250-firmware" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DF_CPU=16000000L"/>
+					<Add option="-DPLATFORMIO=30401"/>
+					<Add option="-DARDUINO_AVR_UNO"/>
+					<Add option="-DARDUINO_ARCH_AVR"/>
+					<Add option="-DARDUINO=10620"/>
+					<Add option="-D__AVR_ATmega328P__"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/cores/arduino"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/variants/standard"/>
+					<Add directory="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/src"/>
+					<Add directory="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/.piolibdeps/ArduinoJson_ID64/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SPI/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/Wire/src"/>
+					<Add directory="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/lib/MPU9250/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/EEPROM/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/HID/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SoftwareSerial/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Adafruit_CircuitPlayground"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Adafruit_CircuitPlayground/utility"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Bridge/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Esplora/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Ethernet/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Firmata"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Firmata/utility"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/GSM/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Keyboard/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/LiquidCrystal/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Mouse/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/RobotIRremote/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Robot_Control/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Robot_Motor/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/SD/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Servo/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/SpacebrewYun/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Stepper/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/TFT/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Temboo/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/WiFi/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/toolchain-atmelavr/avr/include"/>
+					<Add directory="/home/ibenito/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/4.9.2/include-fixed"/>
+					<Add directory="/home/ibenito/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/4.9.2/include"/>
+					<Add directory="/home/ibenito/.platformio/packages/tool-unity"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 teeti-MPU9250-firmware"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="teeti-MPU9250-firmware/fast">
+				<Option output="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/teeti-MPU9250-firmware" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DF_CPU=16000000L"/>
+					<Add option="-DPLATFORMIO=30401"/>
+					<Add option="-DARDUINO_AVR_UNO"/>
+					<Add option="-DARDUINO_ARCH_AVR"/>
+					<Add option="-DARDUINO=10620"/>
+					<Add option="-D__AVR_ATmega328P__"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/cores/arduino"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/variants/standard"/>
+					<Add directory="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/src"/>
+					<Add directory="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/.piolibdeps/ArduinoJson_ID64/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SPI/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/Wire/src"/>
+					<Add directory="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/lib/MPU9250/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/EEPROM/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/HID/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/__cores__/arduino/SoftwareSerial/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Adafruit_CircuitPlayground"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Adafruit_CircuitPlayground/utility"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Bridge/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Esplora/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Ethernet/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Firmata"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Firmata/utility"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/GSM/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Keyboard/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/LiquidCrystal/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Mouse/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/RobotIRremote/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Robot_Control/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Robot_Motor/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/SD/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Servo/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/SpacebrewYun/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Stepper/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/TFT/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/Temboo/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/framework-arduinoavr/libraries/WiFi/src"/>
+					<Add directory="/home/ibenito/.platformio/packages/toolchain-atmelavr/avr/include"/>
+					<Add directory="/home/ibenito/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/4.9.2/include-fixed"/>
+					<Add directory="/home/ibenito/.platformio/packages/toolchain-atmelavr/lib/gcc/avr/4.9.2/include"/>
+					<Add directory="/home/ibenito/.platformio/packages/tool-unity"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 teeti-MPU9250-firmware/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/src/main.cpp">
+			<Option target="teeti-MPU9250-firmware"/>
+		</Unit>
+		<Unit filename="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/ibenito/git/teeti-drone/gyro/firmwares/teeti-MPU9250-firmware/CMakeListsPrivate.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

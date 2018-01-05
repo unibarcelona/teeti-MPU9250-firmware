@@ -1,0 +1,1 @@
+/home/ibenito/.platformio/packages/toolchain-atmelavr/bin/avr-g++   -g   CMakeFiles/teeti-MPU9250-firmware.dir/src/main.cpp.o  -o teeti-MPU9250-firmware -rdynamic 
