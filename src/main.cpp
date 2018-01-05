@@ -4,6 +4,7 @@
  license: Beerware - Use this code however you'd like. If you
  find it useful you can buy me a beer some time.
  Modified by Brent Wilkins July 19, 2016
+ Modified by Ismael Benito January 5, 2017
 
  Demonstrate basic MPU-9250 functionality including parameterizing the register
  addresses, initializing the sensor, getting properly scaled accelerometer,
@@ -11,6 +12,9 @@
  to on breadboard monitor. Addition of 9 DoF sensor fusion using open source
  Madgwick and Mahony filter algorithms. Sketch runs on the 3.3 V 8 MHz Pro Mini
  and the Teensy 3.1.
+
+ Modified to implement the firmware in a Workshop for institute students
+ demonstrations at University of Barcelona.
 
  SDA and SCL should have external pull-up resistors (to 3.3V).
  10k resistors are on the EMSENSR-9250 breakout board.
@@ -26,19 +30,6 @@
 
 #include "quaternionFilters.h"
 #include "MPU9250.h"
-
-#ifdef LCD
-#include <Adafruit_GFX.h>
-#include <Adafruit_PCD8544.h>
-
-// Using NOKIA 5110 monochrome 84 x 48 pixel display
-// pin 9 - Serial clock out (SCLK)
-// pin 8 - Serial data out (DIN)
-// pin 7 - Data/Command select (D/C)
-// pin 5 - LCD chip select (CS)
-// pin 6 - LCD reset (RST)
-Adafruit_PCD8544 display = Adafruit_PCD8544(9, 8, 7, 5, 6);
-#endif // LCD
 
 #define AHRS true         // Set to false for basic data read
 #define SerialDebug true  // Set to true to get Serial output for debugging
@@ -61,41 +52,10 @@ void setup()
   pinMode(myLed, OUTPUT);
   digitalWrite(myLed, HIGH);
 
-#ifdef LCD
-  display.begin(); // Ini8ialize the display
-  display.setContrast(58); // Set the contrast
-
-  // Start device display with ID of sensor
-  display.clearDisplay();
-  display.setTextSize(2);
-  display.setCursor(0,0); display.print("MPU9250");
-  display.setTextSize(1);
-  display.setCursor(0, 20); display.print("9-DOF 16-bit");
-  display.setCursor(0, 30); display.print("motion sensor");
-  display.setCursor(20,40); display.print("60 ug LSB");
-  display.display();
-  delay(1000);
-
-  // Set up for data display
-  display.setTextSize(1); // Set text size to normal, 2 is twice normal etc.
-  display.setTextColor(BLACK); // Set pixel color; 1 on the monochrome screen
-  display.clearDisplay();   // clears the screen and buffer
-#endif // LCD
-
   // Read the WHO_AM_I register, this is a good test of communication
   byte c = myIMU.readByte(MPU9250_ADDRESS, WHO_AM_I_MPU9250);
   Serial.print("MPU9250 "); Serial.print("I AM "); Serial.print(c, HEX);
   Serial.print(" I should be "); Serial.println(0x71, HEX);
-
-#ifdef LCD
-  display.setCursor(20,0); display.print("MPU9250");
-  display.setCursor(0,10); display.print("I AM");
-  display.setCursor(0,20); display.print(c, HEX);
-  display.setCursor(0,30); display.print("I Should Be");
-  display.setCursor(0,40); display.print(0x71, HEX);
-  display.display();
-  delay(1000);
-#endif // LCD
 
   if (c == 0x71) // WHO_AM_I should always be 0x68
   {
@@ -119,26 +79,6 @@ void setup()
     // Calibrate gyro and accelerometers, load biases in bias registers
     myIMU.calibrateMPU9250(myIMU.gyroBias, myIMU.accelBias);
 
-#ifdef LCD
-    display.clearDisplay();
-
-    display.setCursor(0, 0); display.print("MPU9250 bias");
-    display.setCursor(0, 8); display.print(" x   y   z  ");
-
-    display.setCursor(0,  16); display.print((int)(1000*accelBias[0]));
-    display.setCursor(24, 16); display.print((int)(1000*accelBias[1]));
-    display.setCursor(48, 16); display.print((int)(1000*accelBias[2]));
-    display.setCursor(72, 16); display.print("mg");
-
-    display.setCursor(0,  24); display.print(myIMU.gyroBias[0], 1);
-    display.setCursor(24, 24); display.print(myIMU.gyroBias[1], 1);
-    display.setCursor(48, 24); display.print(myIMU.gyroBias[2], 1);
-    display.setCursor(66, 24); display.print("o/s");
-
-    display.display();
-    delay(1000);
-#endif // LCD
-
     myIMU.initMPU9250();
     // Initialize device for active mode read of acclerometer, gyroscope, and
     // temperature
@@ -149,17 +89,6 @@ void setup()
     byte d = myIMU.readByte(AK8963_ADDRESS, WHO_AM_I_AK8963);
     Serial.print("AK8963 "); Serial.print("I AM "); Serial.print(d, HEX);
     Serial.print(" I should be "); Serial.println(0x48, HEX);
-
-#ifdef LCD
-    display.clearDisplay();
-    display.setCursor(20,0); display.print("AK8963");
-    display.setCursor(0,10); display.print("I AM");
-    display.setCursor(0,20); display.print(d, HEX);
-    display.setCursor(0,30); display.print("I Should Be");
-    display.setCursor(0,40); display.print(0x48, HEX);
-    display.display();
-    delay(1000);
-#endif // LCD
 
     // Get magnetometer calibration from AK8963 ROM
     myIMU.initAK8963(myIMU.magCalibration);
@@ -176,18 +105,6 @@ void setup()
       Serial.println(myIMU.magCalibration[2], 2);
     }
 
-#ifdef LCD
-    display.clearDisplay();
-    display.setCursor(20,0); display.print("AK8963");
-    display.setCursor(0,10); display.print("ASAX "); display.setCursor(50,10);
-    display.print(myIMU.magCalibration[0], 2);
-    display.setCursor(0,20); display.print("ASAY "); display.setCursor(50,20);
-    display.print(myIMU.magCalibration[1], 2);
-    display.setCursor(0,30); display.print("ASAZ "); display.setCursor(50,30);
-    display.print(myIMU.magCalibration[2], 2);
-    display.display();
-    delay(1000);
-#endif // LCD
   } // if (c == 0x71)
   else
   {
@@ -298,32 +215,6 @@ void loop()
         Serial.println(" degrees C");
       }
 
-#ifdef LCD
-      display.clearDisplay();
-      display.setCursor(0, 0); display.print("MPU9250/AK8963");
-      display.setCursor(0, 8); display.print(" x   y   z  ");
-
-      display.setCursor(0,  16); display.print((int)(1000*myIMU.ax));
-      display.setCursor(24, 16); display.print((int)(1000*myIMU.ay));
-      display.setCursor(48, 16); display.print((int)(1000*myIMU.az));
-      display.setCursor(72, 16); display.print("mg");
-
-      display.setCursor(0,  24); display.print((int)(myIMU.gx));
-      display.setCursor(24, 24); display.print((int)(myIMU.gy));
-      display.setCursor(48, 24); display.print((int)(myIMU.gz));
-      display.setCursor(66, 24); display.print("o/s");
-
-      display.setCursor(0,  32); display.print((int)(myIMU.mx));
-      display.setCursor(24, 32); display.print((int)(myIMU.my));
-      display.setCursor(48, 32); display.print((int)(myIMU.mz));
-      display.setCursor(72, 32); display.print("mG");
-
-      display.setCursor(0,  40); display.print("Gyro T ");
-      display.setCursor(50,  40); display.print(myIMU.temperature, 1);
-      display.print(" C");
-      display.display();
-#endif // LCD
-
       myIMU.count = millis();
       digitalWrite(myLed, !digitalRead(myLed));  // toggle led
     } // if (myIMU.delt_t > 500)
@@ -359,22 +250,23 @@ void loop()
         Serial.print(" qz = "); Serial.println(*(getQ() + 3));
       }
 
-// Define output variables from updated quaternion---these are Tait-Bryan
-// angles, commonly used in aircraft orientation. In this coordinate system,
-// the positive z-axis is down toward Earth. Yaw is the angle between Sensor
-// x-axis and Earth magnetic North (or true North if corrected for local
-// declination, looking down on the sensor positive yaw is counterclockwise.
-// Pitch is angle between sensor x-axis and Earth ground plane, toward the
-// Earth is positive, up toward the sky is negative. Roll is angle between
-// sensor y-axis and Earth ground plane, y-axis up is positive roll. These
-// arise from the definition of the homogeneous rotation matrix constructed
-// from quaternions. Tait-Bryan angles as well as Euler angles are
-// non-commutative; that is, the get the correct orientation the rotations
-// must be applied in the correct order which for this configuration is yaw,
-// pitch, and then roll.
-// For more see
-// http://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
-// which has additional links.
+/* Define output variables from updated quaternion---these are Tait-Bryan
+ angles, commonly used in aircraft orientation. In this coordinate system,
+ the positive z-axis is down toward Earth. Yaw is the angle between Sensor
+ x-axis and Earth magnetic North (or true North if corrected for local
+ declination, looking down on the sensor positive yaw is counterclockwise.
+ Pitch is angle between sensor x-axis and Earth ground plane, toward the
+ Earth is positive, up toward the sky is negative. Roll is angle between
+ sensor y-axis and Earth ground plane, y-axis up is positive roll. These
+ arise from the definition of the homogeneous rotation matrix constructed
+ from quaternions. Tait-Bryan angles as well as Euler angles are
+ non-commutative; that is, the get the correct orientation the rotations
+ must be applied in the correct order which for this configuration is yaw,
+ pitch, and then roll.
+ For more see
+ http://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
+ which has additional links.
+ */
       myIMU.yaw   = atan2(2.0f * (*(getQ()+1) * *(getQ()+2) + *getQ() *
                     *(getQ()+3)), *getQ() * *getQ() + *(getQ()+1) * *(getQ()+1)
                     - *(getQ()+2) * *(getQ()+2) - *(getQ()+3) * *(getQ()+3));
