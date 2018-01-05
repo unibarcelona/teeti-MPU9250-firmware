@@ -32,6 +32,8 @@
 #include "MPU9250.h"
 #include "ArduinoJson.h"
 
+#define SerialDebug true
+
 // Pin definitions
 int intPin = 12;  // These can be changed, 2 and 3 are the Arduinos ext int pins
 int myLed  = 13;  // Set up pin 13 led for toggling
@@ -73,20 +75,12 @@ void setup()
     position["pitch"] = 0;
     position["roll"] = 0;
 
-
     delay(50);
 
     Wire.begin();
     // TWBR = 12;  // 400 kbit/sec I2C speed
     Serial.begin(38400);
 
-//    Serial.println("ArduinoJson initialized with this structure: ");
-//    String output_json;
-//    root.printTo(output_json);
-
-//    Serial.println(output_json);
-
-    delay(50);
 
     // Set up the interrupt pin, its set as active high, push-pull
     pinMode(intPin, INPUT);
@@ -99,112 +93,109 @@ void setup()
     Serial.print("MPU9250 "); Serial.print("I AM "); Serial.print(c, HEX);
     Serial.print(" I should be "); Serial.println(0x71, HEX);
 
-  if (c == 0x71) // WHO_AM_I should always be 0x68
-  {
-    Serial.println("MPU9250 is online...");
+    if (c == 0x71) // WHO_AM_I should always be 0x68
+    {
+        Serial.println("MPU9250 is online...");
 
-    // Start by performing self test and reporting values
-    myIMU.MPU9250SelfTest(myIMU.SelfTest);
-    Serial.print("x-axis self test: acceleration trim within : ");
-    Serial.print(myIMU.SelfTest[0],1); Serial.println("% of factory value");
-    Serial.print("y-axis self test: acceleration trim within : ");
-    Serial.print(myIMU.SelfTest[1],1); Serial.println("% of factory value");
-    Serial.print("z-axis self test: acceleration trim within : ");
-    Serial.print(myIMU.SelfTest[2],1); Serial.println("% of factory value");
-    Serial.print("x-axis self test: gyration trim within : ");
-    Serial.print(myIMU.SelfTest[3],1); Serial.println("% of factory value");
-    Serial.print("y-axis self test: gyration trim within : ");
-    Serial.print(myIMU.SelfTest[4],1); Serial.println("% of factory value");
-    Serial.print("z-axis self test: gyration trim within : ");
-    Serial.print(myIMU.SelfTest[5],1); Serial.println("% of factory value");
+        // Start by performing self test and reporting values
+        myIMU.MPU9250SelfTest(myIMU.SelfTest);
+        Serial.print("x-axis self test: acceleration trim within : ");
+        Serial.print(myIMU.SelfTest[0],1); Serial.println("% of factory value");
+        Serial.print("y-axis self test: acceleration trim within : ");
+        Serial.print(myIMU.SelfTest[1],1); Serial.println("% of factory value");
+        Serial.print("z-axis self test: acceleration trim within : ");
+        Serial.print(myIMU.SelfTest[2],1); Serial.println("% of factory value");
+        Serial.print("x-axis self test: gyration trim within : ");
+        Serial.print(myIMU.SelfTest[3],1); Serial.println("% of factory value");
+        Serial.print("y-axis self test: gyration trim within : ");
+        Serial.print(myIMU.SelfTest[4],1); Serial.println("% of factory value");
+        Serial.print("z-axis self test: gyration trim within : ");
+        Serial.print(myIMU.SelfTest[5],1); Serial.println("% of factory value");
 
-    // Calibrate gyro and accelerometers, load biases in bias registers
-    myIMU.calibrateMPU9250(myIMU.gyroBias, myIMU.accelBias);
+        // Calibrate gyro and accelerometers, load biases in bias registers
+        myIMU.calibrateMPU9250(myIMU.gyroBias, myIMU.accelBias);
 
-    myIMU.initMPU9250();
-    // Initialize device for active mode read of acclerometer, gyroscope, and
-    // temperature
-    Serial.println("MPU9250 initialized for active data mode....");
+        myIMU.initMPU9250();
+        // Initialize device for active mode read of acclerometer, gyroscope, and
+        // temperature
+        Serial.println("MPU9250 initialized for active data mode....");
 
-    // Read the WHO_AM_I register of the magnetometer, this is a good test of
-    // communication
-    byte d = myIMU.readByte(AK8963_ADDRESS, WHO_AM_I_AK8963);
-    Serial.print("AK8963 "); Serial.print("I AM "); Serial.print(d, HEX);
-    Serial.print(" I should be "); Serial.println(0x48, HEX);
+        // Read the WHO_AM_I register of the magnetometer, this is a good test of
+        // communication
+        byte d = myIMU.readByte(AK8963_ADDRESS, WHO_AM_I_AK8963);
+        Serial.print("AK8963 "); Serial.print("I AM "); Serial.print(d, HEX);
+        Serial.print(" I should be "); Serial.println(0x48, HEX);
 
-    // Get magnetometer calibration from AK8963 ROM
-    myIMU.initAK8963(myIMU.magCalibration);
-    // Initialize device for active mode read of magnetometer
-    Serial.println("AK8963 initialized for active data mode....");
-
-
-    //  Serial.println("Calibration values: ");
-    Serial.print("X-Axis sensitivity adjustment value ");
-    Serial.println(myIMU.magCalibration[0], 2);
-    Serial.print("Y-Axis sensitivity adjustment value ");
-    Serial.println(myIMU.magCalibration[1], 2);
-    Serial.print("Z-Axis sensitivity adjustment value ");
-    Serial.println(myIMU.magCalibration[2], 2);
+        // Get magnetometer calibration from AK8963 ROM
+        myIMU.initAK8963(myIMU.magCalibration);
+        // Initialize device for active mode read of magnetometer
+        Serial.println("AK8963 initialized for active data mode....");
 
 
-  } // if (c == 0x71)
-  else
-  {
-    Serial.print("Could not connect to MPU9250: 0x");
-    Serial.println(c, HEX);
-    while(1) ; // Loop forever if communication doesn't happen
-  }
+        //  Serial.println("Calibration values: ");
+        Serial.print("X-Axis sensitivity adjustment value ");
+        Serial.println(myIMU.magCalibration[0], 2);
+        Serial.print("Y-Axis sensitivity adjustment value ");
+        Serial.println(myIMU.magCalibration[1], 2);
+        Serial.print("Z-Axis sensitivity adjustment value ");
+        Serial.println(myIMU.magCalibration[2], 2);
+
+
+    } // if (c == 0x71)
+    else
+    {
+        Serial.print("Could not connect to MPU9250: 0x");
+        Serial.println(c, HEX);
+        while(1) ; // Loop forever if communication doesn't happen
+    }
 }
 
 void loop()
 {
-  // If intPin goes high, all data registers have new data
-  // On interrupt, check if data ready interrupt
-  if (myIMU.readByte(MPU9250_ADDRESS, INT_STATUS) & 0x01)
-  {  
-    myIMU.readAccelData(myIMU.accelCount);  // Read the x/y/z adc values
-    myIMU.getAres();
+    // If intPin goes high, all data registers have new data
+    // On interrupt, check if data ready interrupt
+    if (myIMU.readByte(MPU9250_ADDRESS, INT_STATUS) & 0x01)
+    {
+        myIMU.readAccelData(myIMU.accelCount);  // Read the x/y/z adc values
+        myIMU.getAres();
 
-    // Now we'll calculate the accleration value into actual g's
-    // This depends on scale being set
-    myIMU.ax = (float)myIMU.accelCount[0]*myIMU.aRes; // - accelBias[0];
-    myIMU.ay = (float)myIMU.accelCount[1]*myIMU.aRes; // - accelBias[1];
-    myIMU.az = (float)myIMU.accelCount[2]*myIMU.aRes; // - accelBias[2];
+        // Now we'll calculate the accleration value into actual g's
+        // This depends on scale being set
+        myIMU.ax = (float)myIMU.accelCount[0]*myIMU.aRes; // - accelBias[0];
+        myIMU.ay = (float)myIMU.accelCount[1]*myIMU.aRes; // - accelBias[1];
+        myIMU.az = (float)myIMU.accelCount[2]*myIMU.aRes; // - accelBias[2];
 
-    myIMU.readGyroData(myIMU.gyroCount);  // Read the x/y/z adc values
-    myIMU.getGres();
+        myIMU.readGyroData(myIMU.gyroCount);  // Read the x/y/z adc values
+        myIMU.getGres();
 
-    // Calculate the gyro value into actual degrees per second
-    // This depends on scale being set
-    myIMU.gx = (float)myIMU.gyroCount[0]*myIMU.gRes;
-    myIMU.gy = (float)myIMU.gyroCount[1]*myIMU.gRes;
-    myIMU.gz = (float)myIMU.gyroCount[2]*myIMU.gRes;
+        // Calculate the gyro value into actual degrees per second
+        // This depends on scale being set
+        myIMU.gx = (float)myIMU.gyroCount[0]*myIMU.gRes;
+        myIMU.gy = (float)myIMU.gyroCount[1]*myIMU.gRes;
+        myIMU.gz = (float)myIMU.gyroCount[2]*myIMU.gRes;
 
-    myIMU.readMagData(myIMU.magCount);  // Read the x/y/z adc values
-    myIMU.getMres();
-    // User environmental x-axis correction in milliGauss, should be
-    // automatically calculated
-    myIMU.magbias[0] = +470.;
-    // User environmental x-axis correction in milliGauss TODO axis??
-    myIMU.magbias[1] = +120.;
-    // User environmental x-axis correction in milliGauss
-    myIMU.magbias[2] = +125.;
+        myIMU.readMagData(myIMU.magCount);  // Read the x/y/z adc values
+        myIMU.getMres();
+        // User environmental x-axis correction in milliGauss, should be
+        // automatically calculated
+        myIMU.magbias[0] = +470.;
+        // User environmental x-axis correction in milliGauss TODO axis??
+        myIMU.magbias[1] = +120.;
+        // User environmental x-axis correction in milliGauss
+        myIMU.magbias[2] = +125.;
 
-    // Calculate the magnetometer values in milliGauss
-    // Include factory calibration per data sheet and user environmental
-    // corrections
-    // Get actual magnetometer value, this depends on scale being set
-    myIMU.mx = (float)myIMU.magCount[0]*myIMU.mRes*myIMU.magCalibration[0] -
-               myIMU.magbias[0];
-    myIMU.my = (float)myIMU.magCount[1]*myIMU.mRes*myIMU.magCalibration[1] -
-               myIMU.magbias[1];
-    myIMU.mz = (float)myIMU.magCount[2]*myIMU.mRes*myIMU.magCalibration[2] -
-               myIMU.magbias[2];
+        // Calculate the magnetometer values in milliGauss
+        // Include factory calibration per data sheet and user environmental
+        // corrections
+        // Get actual magnetometer value, this depends on scale being set
+        myIMU.mx = (float)myIMU.magCount[0]*myIMU.mRes*myIMU.magCalibration[0] -
+                   myIMU.magbias[0];
+        myIMU.my = (float)myIMU.magCount[1]*myIMU.mRes*myIMU.magCalibration[1] -
+                   myIMU.magbias[1];
+        myIMU.mz = (float)myIMU.magCount[2]*myIMU.mRes*myIMU.magCalibration[2] -
+                   myIMU.magbias[2];
 
-//      myIMU.tempCount = myIMU.readTempData();  // Read the adc values
-//      // Temperature in degrees Centigrade
-//      myIMU.temperature = ((float) myIMU.tempCount) / 333.87 + 21.0;
-  } // if (readByte(MPU9250_ADDRESS, INT_STATUS) & 0x01)
+    } // if (readByte(MPU9250_ADDRESS, INT_STATUS) & 0x01)
 
     // Must be called before updating quaternions!
     myIMU.updateTime();
@@ -285,7 +276,9 @@ void loop()
         // Declination of SparkFun Electronics (40°05'26.6"N 105°11'05.9"W) is
         // 	8° 30' E  ± 0° 21' (or 8.5°) on 2016-07-19
         // - http://www.ngdc.noaa.gov/geomag-web/#declination
-        myIMU.yaw   -= 8.5;
+        // Correcting declination for Barcelona at 2018-01-05
+        // 0° 51' E  ± 0° 19'  changing by  0° 7' E per year -> 0.85º
+        myIMU.yaw   -= .85;
         myIMU.roll  *= RAD_TO_DEG;
 
         // Save the position.
@@ -299,8 +292,12 @@ void loop()
 //    Serial.println(" Hz");
 
         // Send all together in JSON format through serial:
-//        root.printTo(Serial);
+
+        #if SerialDebug
         root.prettyPrintTo(Serial);
+        #else
+        root.printTo(Serial);
+        #endif
         Serial.println();
 
         myIMU.count = millis();
