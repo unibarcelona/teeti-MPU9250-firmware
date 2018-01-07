@@ -32,7 +32,7 @@
 #include "MPU9250.h"
 #include "ArduinoJson.h"
 
-#define SerialDebug true
+#define SerialDebug false
 
 // Pin definitions
 int intPin = 12;  // These can be changed, 2 and 3 are the Arduinos ext int pins
@@ -41,8 +41,9 @@ int myLed  = 13;  // Set up pin 13 led for toggling
 MPU9250 myIMU;
 
 const size_t bufferSize = 4*JSON_OBJECT_SIZE(3) + JSON_OBJECT_SIZE(4) + JSON_OBJECT_SIZE(5);
-DynamicJsonBuffer jsonBuffer(bufferSize+10);
+DynamicJsonBuffer jsonBuffer(bufferSize);
 JsonObject& root = jsonBuffer.createObject();
+//JsonObject& time = root.createNestedObject("time");
 JsonObject& acc = root.createNestedObject("acc");
 JsonObject& gir = root.createNestedObject("gir");
 JsonObject& mag = root.createNestedObject("mag");
@@ -51,16 +52,16 @@ JsonObject& position = root.createNestedObject("position");
 
 void setup()
 {
+//    time["timestamp"] = 0;
+//    time["rate"] = 0;
 
     acc["x"] = 0;
     acc["y"] = 0;
     acc["z"] = 0;
 
-
     gir["x"] = 0;
     gir["y"] = 0;
     gir["z"] = 0;
-
 
     mag["x"] = 0;
     mag["y"] = 0;
@@ -246,22 +247,22 @@ void loop()
 
 
 
-/* Define output variables from updated quaternion---these are Tait-Bryan
- angles, commonly used in aircraft orientation. In this coordinate system,
- the positive z-axis is down toward Earth. Yaw is the angle between Sensor
- x-axis and Earth magnetic North (or true North if corrected for local
- declination, looking down on the sensor positive yaw is counterclockwise.
- Pitch is angle between sensor x-axis and Earth ground plane, toward the
- Earth is positive, up toward the sky is negative. Roll is angle between
- sensor y-axis and Earth ground plane, y-axis up is positive roll. These
- arise from the definition of the homogeneous rotation matrix constructed
- from quaternions. Tait-Bryan angles as well as Euler angles are
- non-commutative; that is, the get the correct orientation the rotations
- must be applied in the correct order which for this configuration is yaw,
- pitch, and then roll.
- For more see
- http://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
- which has additional links.
+/*  Define output variables from updated quaternion---these are Tait-Bryan
+     angles, commonly used in aircraft orientation. In this coordinate system,
+     the positive z-axis is down toward Earth. Yaw is the angle between Sensor
+     x-axis and Earth magnetic North (or true North if corrected for local
+     declination, looking down on the sensor positive yaw is counterclockwise.
+     Pitch is angle between sensor x-axis and Earth ground plane, toward the
+     Earth is positive, up toward the sky is negative. Roll is angle between
+     sensor y-axis and Earth ground plane, y-axis up is positive roll. These
+     arise from the definition of the homogeneous rotation matrix constructed
+     from quaternions. Tait-Bryan angles as well as Euler angles are
+     non-commutative; that is, the get the correct orientation the rotations
+     must be applied in the correct order which for this configuration is yaw,
+     pitch, and then roll.
+     For more see
+     http://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
+     which has additional links.
  */
         myIMU.yaw   = atan2(2.0f * (*(getQ()+1) * *(getQ()+2) + *getQ() *
                     *(getQ()+3)), *getQ() * *getQ() + *(getQ()+1) * *(getQ()+1)
@@ -273,11 +274,13 @@ void loop()
                     - *(getQ()+2) * *(getQ()+2) + *(getQ()+3) * *(getQ()+3));
         myIMU.pitch *= RAD_TO_DEG;
         myIMU.yaw   *= RAD_TO_DEG;
-        // Declination of SparkFun Electronics (40°05'26.6"N 105°11'05.9"W) is
-        // 	8° 30' E  ± 0° 21' (or 8.5°) on 2016-07-19
-        // - http://www.ngdc.noaa.gov/geomag-web/#declination
-        // Correcting declination for Barcelona at 2018-01-05
-        // 0° 51' E  ± 0° 19'  changing by  0° 7' E per year -> 0.85º
+
+/* Declination of SparkFun Electronics (40°05'26.6"N 105°11'05.9"W) is
+    8° 30' E  ± 0° 21' (or 8.5°) on 2016-07-19
+    - http://www.ngdc.noaa.gov/geomag-web/#declination
+    Correcting declination for Barcelona at 2018-01-05
+    0° 51' E  ± 0° 19'  changing by  0° 7' E per year -> 0.85º
+ */
         myIMU.yaw   -= .85;
         myIMU.roll  *= RAD_TO_DEG;
 
@@ -286,10 +289,13 @@ void loop()
         position["yaw"] = myIMU.yaw;
         position["roll"] = myIMU.roll;
 
+        // Save temporal variables.
+//        time["rate"] = (float) myIMU.sumCount/myIMU.sum;
+//        time["timestamp"] = myIMU.count;
 
-//    Serial.print("rate = ");
-//    Serial.print((float)myIMU.sumCount/myIMU.sum, 2);
-//    Serial.println(" Hz");
+//        Serial.print("rate = ");
+//        Serial.print((float)myIMU.sumCount/myIMU.sum, 2);
+//        Serial.println(" Hz");
 
         // Send all together in JSON format through serial:
 
