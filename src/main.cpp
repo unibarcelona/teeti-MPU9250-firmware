@@ -221,7 +221,7 @@ void loop()
     myIMU.delt_t = millis() - myIMU.count;
 
     // update LCD once per half-second independent of read rate
-    if (myIMU.delt_t > 500)
+    if (myIMU.delt_t > 100)
     {
 
         // Save acceleration in 'G'.
